@@ -1,3 +1,18 @@
+# After downloading this project 
+npm install
+npm run clean
+npm run start
+
+# To build in android
+ionic cordova run android
+
+# To build in ios
+ionic cordova run ios
+
+
+
+
+
 # NgSimpleAutocomplete
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
