@@ -1,0 +1,64 @@
+/*=================AutoComplete styling========*/
+.auto-complete-icon {
+    background-image: url('../assets/icon/icons/close.png') !important;
+  }
+  
+  .multiSeletedItem {
+    background: #7f7f7f !important;
+    opacity: 1 !important;
+    padding: 4px 7px 4px 10px !important;
+  }
+  
+  .ng-simple-autocomplete {
+    width: 100% !important;
+    padding-left: 16px !important;
+  }
+  
+  .ng-simple-autocomplete > .multiSelectMain {
+    border: none !important;
+    border-bottom: 1px solid #dedede !important;
+    box-shadow: none !important;
+  }
+  
+  .ng-simple-autocomplete > .multiSelectMain > span > input[type=text]{
+    padding-left: 0px !important;
+  }
+  
+  .ng-simple-autocomplete > input[type='text'] {
+      border: none !important; 
+      -webkit-box-shadow: none !important;  
+      box-shadow: none !important; 
+      width: 100% !important;
+      padding: 10px !important;
+      padding-left: 0px !important;
+      border-bottom: 1px solid #dedede !important;
+  }
+  .ng-simple-autocomplete > ul {
+    border: 1px solid rgba(63, 63, 64, 0.6) !important;
+    font-size: 16px !important;
+    padding: 10px !important;
+    list-style-type: none;
+    margin: 0 !important;
+    width: 519px;
+    padding-right: 1px;
+    line-height: 1.2rem;
+    transition: max-height 0.5s, overflow 0s;
+    max-height: 200px;
+    overflow-y: scroll
+  }
+  .ng-simple-autocomplete > ul li {
+    font-size: 14px !important;
+    padding-bottom: 4px !important;
+  }
+  .ng-simple-autocomplete > ul > li:hover {
+    background-color: rgba(63, 63, 64, 0.6) !important;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .m-b-15 {
+    margin-bottom: 1.8rem !important;
+  }
+  
+  /*=================End of AutoComplete styling========*/
+  

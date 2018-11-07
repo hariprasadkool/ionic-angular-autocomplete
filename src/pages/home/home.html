@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="submit()">
+
+    <ion-row class="mt-5">
+      <ion-col col-12 class="position-initial">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left>Assigned to*</ion-label>
+        <ng-simple-autocomplete [placeholder]="placeholderAssignedTo" [sourceArray]="assignTodropdown" [fieldNameFormatter]="returnFieldFromAssigned"
+         (onSelect)="selectedAssigned($event)" [searchText]="assignsearchTextValue">
+        </ng-simple-autocomplete>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="mt-5">
+      <ion-col col-12 class="position-initial">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left>Owners*</ion-label>
+        <ng-simple-autocomplete [placeholder]="placeholderOwner" [sourceArray]="owners" [fieldNameFormatter]="returnFieldFromOwner"
+          (onSelect)="selectedOwner($event)" [searchText]="ownersearchTextValue">
+        </ng-simple-autocomplete>
+      </ion-col> 
+    </ion-row>
+
+    <ion-row class="mt-5">
+      <ion-col col-12 class="position-initial">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left>Notify</ion-label>
+        <ng-simple-autocomplete [placeholder]="placeholderNotify" [sourceArray]="data" [multiSelect]="true" [fieldNameFormatter]="returnFieldFromNotify"
+          (onSelect)="selectedNotify($event)" [mutliSelectedArray]="datasearchTextValue">
+        </ng-simple-autocomplete>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>
+
+<!-- <ion-footer margin-bottom no-border>
+  <ion-toolbar>
+    <div padding-horizontal>
+      <ion-row align-items-center>
+        <ion-col class="position-initial">
+          <button type="button" (click)="goBack()" ion-button outline block class="cancel-btn">
+            Cancel
+          </button>
+        </ion-col>
+        <ion-col>
+          <button type="submit" (click)="logFormRisk()" ion-button block class="submit-btn">
+            Submit
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-footer> -->
