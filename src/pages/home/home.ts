@@ -6,89 +6,122 @@ import {FormBuilder, Validators, FormGroup, FormControl} from "@angular/forms";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  placeholderAssignedTo = " "; 
-  placeholderOwner = " ";
-  placeholderNotify = " ";
-  assignsearchTextValue: any;
-  ownersearchTextValue: any;
-  datasearchTextValue: any;
-  raidform: FormGroup;
-  assignTodropdown = [
+
+  // Placeholders variable
+  // =====================
+
+  public placeholderPlayer = " "; 
+  public placeholderNotifyPlayer = " "
+  public placeholderTeam = "Search Team";
+  public placeholderNotifyTeam = "Notify Team"
+
+  // Mock data
+  // ==========
+
+  public playerData = [
     {
-      ID: '1',
-      name: 'assign-1'
+      id: '1',
+      name: 'Virat'
     },
     {
-      ID: '2',
-      name: 'assign-2'
-    }
-  ];
-  owners = [
-    {
-      ID: '1',
-      name: 'owner-1'
-    },
-    {
-      ID: '2',
-      name: 'owner-2'
-    }
-  ];
-  data: any = [
-    {
-      ID: '1',
-      name: 'hari'
-    },
-    {
-      ID: '2',
-      name: 'prakash'
-    },
-    {
-      ID: '3',
-      name: 'mahesh'
-    },
-    {
-      ID: '4',
-      name: 'ramesh'
+      id: '2',
+      name: 'Sachin'
     }
   ];
 
+  public notifyPlayerData = [
+    {
+      id: '1',
+      name: 'Virat Kohli'
+    },
+    {
+      id: '2',
+      name: 'Sachin Tendulkar'
+    }
+  ];
+
+  public teamData = [
+    {
+      id: '1',
+      name: 'India'
+    },
+    {
+      id: '2',
+      name: 'South Africa'
+    }
+  ];
+
+  public notifyTeamData = [
+    {
+      id: '1',
+      name: 'Men in Blue'
+    },
+    {
+      id: '2',
+      name: 'Men in Green'
+    },
+    {
+      id: '3',
+      name: 'Men in Yellow'
+    },
+    {
+      id: '4',
+      name: 'Men in Black'
+    }
+  ];
+
+
+  // pre-population variables data
+  // =============================
+
+  playerValue: any;
+  notifyplayerValue: any;
+  teamValue: any;
+  notifyTeamValue: any;
+
   constructor(public navCtrl: NavController, private _formBuilder: FormBuilder) {
-    this.assignsearchTextValue = "assign-1"
-    this.ownersearchTextValue = "owner-1";
-    this.datasearchTextValue = [
+
+    // pre-populating values for fields
+
+    this.teamValue = "India";
+    this.notifyTeamValue = [
       {
-        ID: '1',
-        name: 'hari'
-      },
-      {
-        ID: '2',
-        name: 'prakash'
+        id: '1',
+        name: 'Men in Blue'
       }
     ];
 
   }
 
-  returnFieldFromAssigned(item){
-    return item.name
-  }
-
-  selectedAssigned($event){
-    console.log($event);
-  }
-
-  returnFieldFromOwner(item){
-    return item.name
-  }
-
-  selectedOwner($event){
-    console.log($event);
-  }
-
-  returnFieldFromNotify(item) {
+  returnFieldFromPlayer(item){
     return item.name;
   }
 
-  selectedNotify($event) {
+  selectedPlayer($event){
+    console.log($event);
+  }
+
+  returnFieldFromNotifyPlayer(item){
+    return item.name;
+  }
+
+  selectedNotifyPlayer($event){
+    console.log($event);
+  }
+
+  returnFieldFromTeam(item){
+    return item.name
+  }
+
+  selectedTeam($event){
+    console.log($event);
+  }
+
+  returnFieldFromNotifyTeam(item) {
+    return item.name;
+  }
+
+  selectedNotifyTeam($event) {
     console.log($event);
   }
 

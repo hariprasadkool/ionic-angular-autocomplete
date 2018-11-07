@@ -1,5 +1,6 @@
 <div class="ng-simple-autocomplete">
-  <input type="text" *ngIf="!multiSelect" #inputBox [placeholder]="placeholder"
+<div>
+  <input class="input-border" type="text" *ngIf="!multiSelect" #inputBox [placeholder]="placeholder"
   [(ngModel)]="searchText"
   (focus)="toggleDropdown('focus')"
   (keyup)="selectItemByKeyboard($event.keyCode)"
@@ -7,10 +8,12 @@
   (blur)="toggleDropdown('blur')"
   (focusout)="showError()"
   > 
-  <div *ngIf="(searchText == '') || (searchText == undefined && error)" style="color:red">Required Field</div>
+  <ion-icon name={{iconName}} float-right *ngIf="(requiredIcon && !multiSelect && searchText == undefined) || (requiredIcon && !multiSelect && searchText == '')"></ion-icon>  
+</div>
+  <div *ngIf="(searchText == '' && requiredField) || (searchText == undefined && requiredField && error)" style="color:red">Required Field</div>
   <div *ngIf="multiSelect" class="multiSelectMain" (click)="focusInput()">
-    <span>
-      <span *ngFor="let item of mutliSelectedArray; let i=index" class="multiSeletedItem">
+    <span style="position: relative">
+      <span style="display: inline-block" *ngFor="let item of mutliSelectedArray; let i=index" class="multiSeletedItem">
         {{ fieldNameFormatter(item) }}
         <span class="auto-complete-icon" (click)="removeFromSeletedArray(i)"></span>
       </span>
@@ -23,15 +26,17 @@
         (input)="onInputChange($event.target.value)"
         (blur)="toggleDropdown('blur')">
       </span>
+      <ion-icon name={{iconName}} float-right *ngIf="(requiredIcon && mutliSelectedArray == undefined) || (requiredIcon && mutliSelectedArray && mutliSelectedArray.length == 0) "></ion-icon>  
   </div>
 
-  <ul *ngIf="showDropDown" #itemList style="background-color:blue">
+  <ul *ngIf="showDropDown" #itemList [ngStyle]="{ 'color': dropDownColor ? dropDownColor : 'black' , 'background-color': dropDownbackgroundColor ? dropDownbackgroundColor : 'white' }">
     <li *ngFor="let item of sourceArray | filter : searchText; let i=index;" 
     (mousedown)="selectValue(item)"
     (mouseover)="updateSelectedItemIndex(i,item)"
-    [ngClass]="{'active-item': i==selectedItemIndex}">
-                {{ fieldNameFormatter(item) }} 
+    [ngClass]="{'active-item': i==selectedItemIndex}"
+    [ngStyle]="{ 'color': dropDownColor ? dropDownColor : 'black' }"
+    >
+      {{ fieldNameFormatter(item) }} 
     </li>
   </ul>
-
 </div>

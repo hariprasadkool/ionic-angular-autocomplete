@@ -1,59 +1,91 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Ionic Autocomplete (with multiselect)
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="submit()">
 
+    <ion-note class="mt-5" padding-left padding-top>Without prepopulated data</ion-note>
     <ion-row class="mt-5">
       <ion-col col-12 class="position-initial">
-        <ion-label class="fs-md clr-grey m-b-15" floating padding-left>Assigned to*</ion-label>
-        <ng-simple-autocomplete [placeholder]="placeholderAssignedTo" [sourceArray]="assignTodropdown" [fieldNameFormatter]="returnFieldFromAssigned"
-         (onSelect)="selectedAssigned($event)" [searchText]="assignsearchTextValue">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left padding-bottom>Player</ion-label>
+        <ng-simple-autocomplete 
+          [placeholder]="placeholderPlayer" 
+          [sourceArray]="playerData" 
+          [fieldNameFormatter]="returnFieldFromPlayer" 
+          [searchText]="playerValue" 
+          [requiredField]="true" 
+          [dropDownColor]="'white'"
+          [dropDownbackgroundColor]="'blue'"
+          [iconName]="'search'"
+          [requiredIcon]="true"
+          (onSelect)="selectedPlayer($event)"
+        >
+        </ng-simple-autocomplete>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mt-5">
+      <ion-col col-12 class="position-initial">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left padding-bottom>NotifyPlayer</ion-label>
+        <ng-simple-autocomplete 
+          [placeholder]="placeholderNotifyPlayer" 
+          [sourceArray]="notifyPlayerData" 
+          [fieldNameFormatter]="returnFieldFromNotifyPlayer"
+          [mutliSelectedArray]="notifyplayerValue" 
+          [multiSelect]="true" 
+          [requiredField]="false" 
+          [dropDownColor]="'white'"
+          [dropDownbackgroundColor]="'orange'"
+          [iconName]="'contact'"
+          [requiredIcon]="true"
+          (onSelect)="selectedNotifyPlayer($event)" 
+        >
         </ng-simple-autocomplete>
       </ion-col>
     </ion-row>
 
+<!-- <hr> -->
+
+    <ion-note class="mt-5" padding-left padding-top>With prepopulated data</ion-note>
     <ion-row class="mt-5">
       <ion-col col-12 class="position-initial">
-        <ion-label class="fs-md clr-grey m-b-15" floating padding-left>Owners*</ion-label>
-        <ng-simple-autocomplete [placeholder]="placeholderOwner" [sourceArray]="owners" [fieldNameFormatter]="returnFieldFromOwner"
-          (onSelect)="selectedOwner($event)" [searchText]="ownersearchTextValue">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left padding-bottom>Team</ion-label>
+        <ng-simple-autocomplete 
+          [placeholder]="placeholderTeam" 
+          [sourceArray]="teamData" 
+          [fieldNameFormatter]="returnFieldFromTeam"
+          [searchText]="teamValue" 
+          [requiredField]="true"  
+          [dropDownColor]="'white'"
+          [dropDownbackgroundColor]="'grey'"
+          [iconName]="'book'"
+          [requiredIcon]="true"
+          (onSelect)="selectedTeam($event)" 
+        >
         </ng-simple-autocomplete>
       </ion-col> 
     </ion-row>
 
     <ion-row class="mt-5">
       <ion-col col-12 class="position-initial">
-        <ion-label class="fs-md clr-grey m-b-15" floating padding-left>Notify</ion-label>
-        <ng-simple-autocomplete [placeholder]="placeholderNotify" [sourceArray]="data" [multiSelect]="true" [fieldNameFormatter]="returnFieldFromNotify"
-          (onSelect)="selectedNotify($event)" [mutliSelectedArray]="datasearchTextValue">
+        <ion-label class="fs-md clr-grey m-b-15" floating padding-left padding-bottom>NotifyTeam</ion-label>
+        <ng-simple-autocomplete 
+          [placeholder]="placeholderNotifyTeam" 
+          [sourceArray]="notifyTeamData"  
+          [fieldNameFormatter]="returnFieldFromNotifyTeam"
+          [mutliSelectedArray]="notifyTeamValue"
+          [multiSelect]="true" 
+          [requiredField]="false"
+          [iconName]="'search'"
+          [requiredIcon]="true"
+          (onSelect)="selectedNotifyTeam($event)"
+        >
         </ng-simple-autocomplete>
       </ion-col>
     </ion-row>
 
-  </form>
-</ion-content>
 
-<!-- <ion-footer margin-bottom no-border>
-  <ion-toolbar>
-    <div padding-horizontal>
-      <ion-row align-items-center>
-        <ion-col class="position-initial">
-          <button type="button" (click)="goBack()" ion-button outline block class="cancel-btn">
-            Cancel
-          </button>
-        </ion-col>
-        <ion-col>
-          <button type="submit" (click)="logFormRisk()" ion-button block class="submit-btn">
-            Submit
-          </button>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-toolbar>
-</ion-footer> -->
+</ion-content>

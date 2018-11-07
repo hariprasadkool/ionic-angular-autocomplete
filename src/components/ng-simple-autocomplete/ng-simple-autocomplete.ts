@@ -7,21 +7,45 @@ import { FilterPipe } from "../../pipes/filter/filter";
 })
 export class NgSimpleAutocompleteComponent implements OnInit {
 
+  /*
+   * Input variables from parent component can go here
+   */
+
   @Input() placeholder = '';
   @Input() sourceArray = [];
   @Input() fieldNameFormatter: (value: any) => string;
-  @Output() onSelect: EventEmitter<any> = new EventEmitter();
-  @Input() multiSelect: boolean = false;
-  @ViewChild('itemList') itemList: ElementRef;
-  @ViewChild('inputBox') inputBox: ElementRef;
-  selectedItemIndex = -1;
-  showDropDown = false;
   @Input() searchText:any;
   @Input() mutliSelectedArray: any;
-  error = false;
+  @Input() requiredField = false;
+  @Input() multiSelect: boolean = false;
+  @Input() dropDownColor = "black";
+  @Input() dropDownbackgroundColor = "white";
+  @Input() iconName = "search";
+  @Input() requiredIcon = false;
+
+  /*
+   * Output variables from parent component can go here
+   */
+
+  @Output() onSelect: EventEmitter<any> = new EventEmitter();
+
+
+  /*
+   * ViewChild variables (i.e. #id) can go here
+   */
+  @ViewChild('itemList') itemList: ElementRef;
+  @ViewChild('inputBox') inputBox: ElementRef;
+
+
+  /*
+   * Public variables can go here
+   */
+  public selectedItemIndex = -1;
+  public showDropDown = false;
+  public error = false;
 
   constructor() {
-   }
+  }
 
   ngOnInit() {}
 
@@ -40,11 +64,15 @@ export class NgSimpleAutocompleteComponent implements OnInit {
   selectValue(item) {
 
     if (this.multiSelect) {
-      for(let i = 0; i<this.mutliSelectedArray.length;i++){
-        if(this.mutliSelectedArray[i]['ID'] == item.ID){
-          this.showDropDown = false;
-          return;
+      if(this.mutliSelectedArray){
+        for(let i = 0; i<this.mutliSelectedArray.length;i++){
+          if((this.mutliSelectedArray[i]['id'] == item.id) || (this.mutliSelectedArray[i]['name'] == item.name)){
+            this.showDropDown = false;
+            return;
+          }
         }
+      }else{
+        this.mutliSelectedArray = [];
       }
       this.mutliSelectedArray.push(item);
       this.onSelect.emit(this.mutliSelectedArray);
@@ -101,4 +129,5 @@ export class NgSimpleAutocompleteComponent implements OnInit {
   removeFromSeletedArray(index) {
     this.mutliSelectedArray.splice(index, 1);
   }
+
 }
